@@ -7,6 +7,6 @@ namespace NBA_App.Configuration
 {
     public class JwtConfig
     {
-        public string? Secret { get; set; }
+        public string Secret { get; set; }
     }
 }
