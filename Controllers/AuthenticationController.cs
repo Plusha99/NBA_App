@@ -52,16 +52,14 @@ namespace NBA_App.Controllers
                         }
                     });
                 }
-
                 
                 var new_user = new IdentityUser()
                 {
                     Email = requestDto.Email,
-                    UserName = requestDto.Email
+                    UserName = requestDto.Name
                 };
 
                 var is_created = await _userManager.CreateAsync(new_user, requestDto.Password);
-
                 if(is_created.Succeeded)
                 {
                     var token = GenerateJwtToken(new_user);
@@ -72,6 +70,7 @@ namespace NBA_App.Controllers
                         Token = token
                     });
                 }
+                
 
                 return BadRequest(new AuthenticationResults()
                 {
@@ -81,6 +80,7 @@ namespace NBA_App.Controllers
                     },
                     Results = false
                 });
+                
 
             }
 
@@ -110,7 +110,7 @@ namespace NBA_App.Controllers
                     {
                         Errors = new List<string>()
                         {
-                            "Invalid "
+                            "Invalid cresentials"
                         },
                         Results = false
                     });
