@@ -20,9 +20,6 @@ namespace NBA_App.Controllers
             _context = context;
         }
 
-
-
-
         [HttpGet]
         public async Task<ActionResult<List<Team>>> GetTeams()
         {
@@ -32,11 +29,11 @@ namespace NBA_App.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<List<Team>>> GetTeam(int id)
         {
-            var game = await _context.Teams.FindAsync(id);
-            if (game == null)
+            var team = await _context.Teams.FindAsync(id);
+            if (team == null)
                 return NotFound("No team here. :/");
 
-            return Ok(game);
+            return Ok(team);
         }
 
         [HttpPost]
